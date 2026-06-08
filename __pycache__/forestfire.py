@@ -11,7 +11,6 @@ Goal: Use NumPy slicing and masks instead of nested loops.
 0 = empty
 1 = tree
 2 = burning"""
-import numpy as np
 
 
 def next_generation(forest):
@@ -54,11 +53,16 @@ cols = int(input("Enter number of columns: "))
 matrix = []
 
 for i in range(rows):
-    row = list(map(int, input(f"Enter row {i+1}: ").split()))
+    row = []
+    for j in range(cols):
+        value = int(input(f"Enter element at ({i}, {j}): "))
+        row.append(value)
     matrix.append(row)
 
 forest = np.array(matrix)
 
-print(f"old forest{forest}")
+print("Old forest:")
+print(forest)
 
+print("Next generation:")
 print(next_generation(forest))
